@@ -3,7 +3,7 @@
 public class BlockPaths : MonoBehaviour
 {
     //Set to GameObject SoundOrder script is on
-    public DataLogging dataLogger;
+    [SerializeField] private DataLogging dataLogger;
 
     private BlockPath blockPath;
 

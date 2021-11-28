@@ -6,20 +6,20 @@ using UnityEngine.XR;
 public class HMDInfoManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        if(!XRSettings.isDeviceActive)
+        switch (XRSettings.isDeviceActive)
         {
-            Debug.Log("No Headset plugged");
-        }
-        else if (XRSettings.isDeviceActive && (XRSettings.loadedDeviceName == "Mock HMD" 
-            || XRSettings.loadedDeviceName == "MockHDMDisplay"))
-        {
-            Debug.Log("Using Mock HDM");
-        }
-        else
-        {
-            Debug.Log("We have a headset " + XRSettings.loadedDeviceName);
+            case false:
+                Debug.Log("No Headset plugged");
+                break;
+            case true when (XRSettings.loadedDeviceName == "Mock HMD"
+                            || XRSettings.loadedDeviceName == "MockHDMDisplay"):
+                Debug.Log("Using Mock HDM");
+                break;
+            default:
+                Debug.Log("We have a headset " + XRSettings.loadedDeviceName);
+                break;
         }
     }
 }
