@@ -14,6 +14,7 @@ public class DataLogging : MonoBehaviour
     [HideInInspector] public List<bool> completed = new List<bool>();
     
     private List<string> playerPosition = new List<string>();
+    private List<string> playerRotation = new List<string>();
     private List<string> timeLogs = new List<string>();
     
     private int completeCount = 0;
@@ -38,6 +39,7 @@ public class DataLogging : MonoBehaviour
         
         // Log where the player is
         InvokeRepeating(nameof(PlayerPosition), 1f, 1f);
+        InvokeRepeating(nameof(PlayerRotation), 1f, 1f);
     }
 
     private void OnTriggerEnter(Collider col)
@@ -55,6 +57,7 @@ public class DataLogging : MonoBehaviour
                 LogTimeAndObject("Maze Completed");
                 SendToFile(timeLogs);
                 SendToFile(playerPosition);
+                SendToFile(playerRotation);
             }
                 
             LogTimeAndObject(objectName);
@@ -74,6 +77,20 @@ public class DataLogging : MonoBehaviour
                          +"\n},";
         playerPosition.Add(jsonString);
     }
+    
+    private void PlayerRotation()
+    {
+        var whatTime = DateTime.Now.ToLongTimeString();
+        var rotation = gameObject.transform.rotation;
+        var jsonString = "{\n\"time\":\""+whatTime+"\","+
+                         "\n\"rotations\": \n{\n"+
+                         "\"x\":"+rotation.x.ToString(CultureInfo.InvariantCulture)+",\n"
+                         +"\"y\":"+rotation.y.ToString(CultureInfo.InvariantCulture)+",\n"
+                         +"\"z\":"+rotation.z.ToString(CultureInfo.InvariantCulture)+"\n}"
+                         +"\n},";
+        playerRotation.Add(jsonString);
+    }
+
 
     private void LogTimeAndObject(string objectName)
     {
