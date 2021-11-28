@@ -89,8 +89,9 @@ public class DataLogging : MonoBehaviour
         string path = Application.persistentDataPath + "/" + filename + ".json";
 
         string dataString = string.Join("\n", data);
+        string newDataString = dataString.Remove(dataString.Length-1); // Trim the last "," char at the end to prevent JSONDecodeError
 
-        File.WriteAllText(path, "[\n"+dataString+"\n]");
+        File.WriteAllText(path, "[\n"+newDataString+"\n]");
 
         Debug.Log("Data is saved");
     }
