@@ -81,7 +81,7 @@ public class DataLogging : MonoBehaviour
     private void PlayerRotation()
     {
         var whatTime = DateTime.Now.ToLongTimeString();
-        var rotation = gameObject.transform.rotation;
+        var rotation = gameObject.transform.rotation.eulerAngles;
         var jsonString = "{\n\"time\":\""+whatTime+"\","+
                          "\n\"rotations\": \n{\n"+
                          "\"x\":"+rotation.x.ToString(CultureInfo.InvariantCulture)+",\n"
