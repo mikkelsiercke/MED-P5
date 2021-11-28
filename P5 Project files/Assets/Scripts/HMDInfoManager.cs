@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
 public class HMDInfoManager : MonoBehaviour
-{
-    // Start is called before the first frame update
+{ 
     private void Start()
     {
         switch (XRSettings.isDeviceActive)

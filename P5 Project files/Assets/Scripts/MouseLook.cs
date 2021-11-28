@@ -5,12 +5,12 @@ public class MouseLook : MonoBehaviour
     public float mouseSens = 1000.0f;
     public Transform playerBody;
 
-    private float xRotation = 0f;
+    private float xRotation;
 
     // Start is called before the first frame update
     private void Start()
     {
-        //Allows hiding the mouse cursor during play
+        // Allows hiding the mouse cursor during play
         Cursor.lockState = CursorLockMode.Locked;
     }
 

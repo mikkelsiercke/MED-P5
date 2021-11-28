@@ -17,7 +17,7 @@ public class DataLogging : MonoBehaviour
     private List<string> playerRotation = new List<string>();
     private List<string> timeLogs = new List<string>();
     
-    private int completeCount = 0;
+    private int completeCount;
 
     private void Start()
     {
