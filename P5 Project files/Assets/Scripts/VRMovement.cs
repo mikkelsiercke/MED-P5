@@ -34,15 +34,10 @@ public class VRMovement : MonoBehaviour
         }
 
         // Acceleration
-        if (speed < maxSpeed && triggerValue)
+        if (speed < maxSpeed)
         {
             speed += acceleration * Time.fixedDeltaTime;
-        }
-        // Deceleration
-        if (speed > 0 && !triggerValue)
-        {
-            speed -= acceleration * Time.fixedDeltaTime;
-        }
+        } 
     }
 
     private void FixedUpdate()
