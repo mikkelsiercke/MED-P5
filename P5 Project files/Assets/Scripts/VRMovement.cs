@@ -13,8 +13,7 @@ public class VRMovement : MonoBehaviour
 
     [SerializeField] private float acceleration = 0.7f;
     [SerializeField] private float maxSpeed = 4f;
-    private float speed = 0f;
-    private bool triggerValue;
+    private float speed;
 
     private void Start()
     {
@@ -27,11 +26,6 @@ public class VRMovement : MonoBehaviour
         // Getting input from VR devices
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
-        
-        // Is there a trigger input on controller?
-        if (device.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out triggerValue) && triggerValue)
-        {
-        }
 
         // Acceleration
         if (speed < maxSpeed)
@@ -46,6 +40,6 @@ public class VRMovement : MonoBehaviour
         Quaternion headYaw = Quaternion.Euler(0, rig.Camera.transform.eulerAngles.y, 0);
 
         Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
-        character.Move(direction * Time.fixedDeltaTime * speed);
+        character.Move(direction * (Time.fixedDeltaTime * speed));
     }
 }

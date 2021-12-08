@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -94,7 +93,7 @@ public class DataLogging : MonoBehaviour
 
     private void LogTimeAndObject(string objectName)
     {
-        var whatTime = DateTime.Now.ToLongTimeString();;
+        var whatTime = DateTime.Now.ToLongTimeString();
         var jsonString = "{\n\"time\":" + whatTime + "\",\n"
                          +"\"object\":\""+objectName+"\"\n},";
         timeLogs.Add(jsonString);
